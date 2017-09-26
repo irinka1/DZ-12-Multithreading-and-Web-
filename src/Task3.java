@@ -15,44 +15,21 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
 public class Task3 extends Application {
     Random r = new Random();
     Pane root = new Pane();
-    /*List<String> list = new ArrayList<>();
-		list.add("https://angloved.ru/wp-content/uploads/2015/01/rusalochka.jpg");
-		list.add("http://bm.img.com.ua/nxs/img/prikol/images/large/1/2/308321_879382.jpg");
-		list.add(30);
-		list.add(40);
-		list.add(50);*/
-
-
 
     public static void main(String[] args) throws Exception {
-
-
-        /*BufferedReader in = new BufferedReader(
-                new InputStreamReader(new FileInputStream("files/links.txt")));
-        String inputLine;
-        while ((inputLine = in.readLine()) != null) {
-            links.add(inputLine);
-            System.out.println(inputLine);
-        }
-        in.close();*/
-
         launch(args);
     }
 
     public void start(Stage primaryStage) throws Exception {
 
-        List<String> links = new ArrayList<>();
+        List<String> links = new ArrayList<>(50);
         links.add("http://bm.img.com.ua/nxs/img/prikol/images/large/1/2/308321_879382.jpg");
         links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrfXzuhJigzPRG8JNqoa6R9Te5n_FwqASiX3cFMKnZCvTHeNgwWA");
         links.add("https://novomoskovsk-ua.info/wp-content/uploads/2015/12/sovetskie-multfilmy.jpg");
@@ -95,18 +72,25 @@ public class Task3 extends Application {
         links.add(" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZa2jME9OC0TcCCyqlyZuV6_9nKZ1l_Anq0RiguRrtweaFwVOn");
         links.add(" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6lzhPmzA_UmqhYsFPtRD9BMLSn7xtHqcdLBqDCFYiw6ZM-Y7A");
         links.add(" https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR85AELkWpsWipxZszCBjQGyQT6Ydn_FN-py7oYQ2011xsDNc1qyQ");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4i3zGBtMZUE4qImcHqJmxEJgGee0Kcy2ndl4-sgn86tKBxrFt");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtyH_VEWbcNTeggzWi9VnFWF55RnWiq_ls7KmEUdVe823r4RGEw");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2bkiCmhFmZilioymVJQvv9gLDYH7GhdZsOH4WPpVbcqFOroY1");
+        links.add("  http://www.stilopolis.it/wp-content/uploads/2012/06/cartonianimati.jpg");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQocE17jSicOLmT4IhnNq5MG8U0TxypbEq-IWhCaJrpibKYgtyN");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQckdLsloRQii-DvbHXZqYvH_C_gZY6NwB6ZaKFVv_kcSn54-8b");
+        links.add("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyj1OT-fWH5HalJnApMdthMBSsQenzMPXQoQ8IdEtQe4d8PQ0m");
+        links.add(" http://softbesplatno.net/uploads/posts/2014-08/1407260234_mikki-maus-3_enl.jpg");
 
-      final Button buttom = new Button("Обновить");
+
+        final Button buttom = new Button("Обновить");
         buttom.setTranslateX(10);
         buttom.setTranslateY(10);
-
         root.getChildren().addAll(buttom);
 
         primaryStage.setScene(new Scene(root));
+        primaryStage.setWidth(600);
+        primaryStage.setHeight(600);
         primaryStage.show();
-        primaryStage.setWidth(500);
-        primaryStage.setHeight(500);
-
 
         buttom.setOnMouseClicked((MouseEvent event) -> {
             GridPane grid = new GridPane();
@@ -114,44 +98,17 @@ public class Task3 extends Application {
             try {
                 for (int i = 0; i < size; i++) {
                 for (int j = 0; j < size; j++) {
+                    final String link = links.get(r.nextInt(35));
 
-                   // getRandomElements(25, links);
-
-                    //List<String> url = new URL(links);
-                    //String activity = links.getBody();
-
-                    for (int i1 = 0; i1 < links.size(); i1++) {
-
-                        final String item = links.get(r.nextInt(25));
-
-                        ImageView image = new ImageView(item);
-                        image.setFitHeight(100);
-                        image.setFitWidth(100);
-                        image.setPreserveRatio(true);
-                        grid.add(image, i, j);
-                    }
+                    ImageView image = new ImageView(link);
+                    image.setFitHeight(100);
+                    image.setFitWidth(100);
+                    image.setPreserveRatio(true);
+                    grid.add(image, i, j);
                 }
             }
-
-        } catch (final IllegalArgumentException e) {}
+            } catch (final IllegalArgumentException e) {}
             root.getChildren().addAll(grid);
-
-
         });
     }
-
-    /*public URL getRandomElements (final int amount, final List<String> list) throws  MalformedURLException {
-        ArrayList<String> returnList1 = new ArrayList<String>(list);
-
-        Collections.shuffle(returnList1); // тут делаем рандом
-        if (returnList1.size() > amount) { // отрезаем не нужную часть
-            // тут отрезаем не нужную часть
-            list.subList(returnList1.size() - amount, returnList1.size()).clear();
-        }
-        ArrayList<URL> returnList = new ArrayList<>(returnList1.size());
-        for (int i = 0; i < returnList1.size(); i++){
-            returnList.add(new URL(returnList1.get(i)));
-        }
-        return returnList.get(r.nextInt());
-    }*/
 }
