@@ -1,0 +1,14 @@
+Task 1
+Create a JavaFX application in the window which has:
+text input field
+button - search. Clicking clears the previous search results (if any) and loads new ones in the asynchronous stream.
+The program must use the YouTube API to display video search results.
+The results should contain:
+Video title
+Channel name
+Date of publication
+Button - View. When you click on a video in the program window.
+
+Task 2
+In the search results, the 5th element is added - an image from the video (thumbnails)
+During the loading of images, the program should not hang, which means that the download should NOT be done in the main thread of the program.
