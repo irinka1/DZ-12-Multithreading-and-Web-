@@ -1,10 +1,10 @@
 /*Задание 3
-Сохранить в программе множество из 50 ссылок в интернет на картинки.
+Save in the program a lot of 50 links to the Internet on the pictures.
 
-Написать JavaFX приложение в котором есть одна кнопка - “Обновить”
-И 25 картинок в одном окне в виде матрицы (5 на 5). Картинки беруться рандомно из массива ссылок.
-После нажатия на кнопку “Обновить”, картинки должны быть еще раз рандомно взяты из множества ссылок, загружены и отображены в окне.
-При этом нельзя хранить в программе сами картинки и рандомом выбирать из них. Каждый раз надо загружать их из интернета.
+Write a JavaFX application in which there is one button - "Update"
+And 25 pictures in one window in the form of a matrix (5 by 5). Pictures are taken randomly from the array of links.
+After clicking on the "Update" button, the images should again be randomly taken from the set of links, loaded and displayed in the window.
+In this case, you can not store images in the program and randomly choose from them. Every time you need to download them from the Internet.
 */
 
 import javafx.application.Application;
@@ -82,7 +82,7 @@ public class Task3 extends Application {
         links.add(" http://softbesplatno.net/uploads/posts/2014-08/1407260234_mikki-maus-3_enl.jpg");
 
 
-        final Button buttom = new Button("Обновить");
+        final Button buttom = new Button("Update");
         buttom.setTranslateX(10);
         buttom.setTranslateY(10);
         root.getChildren().addAll(buttom);
