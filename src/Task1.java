@@ -3,27 +3,27 @@ import javafx.application.Platform;
 import java.util.Scanner;
 import java.util.concurrent.*;
 
-/*Пользователь вводит с консоли числа A и B.
-Программа спрашивает пользователя какое математическое действие надо применить к этим числам:
-+ - * / % == > <
-Действие пользователь вводит в виде соответствующего символа
-После чего программа в отдельном потоке выполняет действие.
-Результат в консоль должен вывести main поток
-Решить задачу без использования глобальных переменных
+/*The user enters numbers A and B from the console.
+The program asks the user what mathematical action should be applied to these numbers:
++ - * /% ==> <
+The user enters the action in the form of the corresponding symbol
+After that the program executes the action in a separate thread.
+The result in the console should output the main thread
+Solve the problem without using global variables
 */
 public class Task1 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
 
-        System.out.println("Введите число A");
+        System.out.println("Enter the number A");
         Scanner sc = new Scanner(System.in);
         int a = sc.nextInt();
 
-        System.out.println("Введите число B");
+        System.out.println("Enter the number B");
         Scanner sc2 = new Scanner(System.in);
         int b = sc2.nextInt();
 
-        System.out.println("Какое математическое действие надо применить к этим числам: + - * / % == > <");
+        System.out.println("What kind of mathematical action should be applied to these numbers?: + - * / % == > <");
         Scanner sc3 = new Scanner(System.in);
         String c = sc3.nextLine();
 
@@ -52,19 +52,19 @@ public class Task1 {
                         result = a % b;
                         break;
                     case "==":
-                        System.out.println("Ваш ответ: " + (a==b));;
+                        System.out.println("Your Answer: " + (a==b));;
                         break;
                     case ">":
-                        System.out.println("Ваш ответ: " + (a>b));;
+                        System.out.println("Your Answer: " + (a>b));;
                         break;
                     case "<":
-                        System.out.println("Ваш ответ: " + (a<b));;
+                        System.out.println("Your Answer: " + (a<b));;
                         break;
                     default:
-                        System.out.println("Такой задачи нет");;
+                        System.out.println("There is no such task");;
                         break;
                 }
-                System.out.println("Ваш ответ: " + result);
+                System.out.println("Your Answer: " + result);
                 Thread.sleep(300);
                 return result;
             }
@@ -74,7 +74,7 @@ public class Task1 {
         FutureTask<Integer> futureTask = new FutureTask<Integer>(callable);
         threadPool.submit(futureTask);
 
-        System.out.println("Задачи поставленны на выполнение: ");
+        System.out.println("Tasks are assigned to implementation: ");
 
        // System.out.println("Callable Value: " + future.get());
         //System.out.println("FutureTask Value: " + futureTask.get());
