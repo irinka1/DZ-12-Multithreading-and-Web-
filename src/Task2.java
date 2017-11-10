@@ -9,21 +9,21 @@ import java.util.concurrent.*;
 import static java.lang.StrictMath.cos;
 import static java.lang.StrictMath.sin;
 
-/*Написать функцию которая создает массив интов размером size. Числа в массиве идут по возрастания от 1 до size.
+/*Write a function that creates an array of ints of size. The numbers in the array are ascending from 1 to size.
 
-С помощью этой функции создайте массив с size равным 80 000 000.
+With this function, create an array with size equal to 80,000,000.
 
-Подсчет
-для каждого элемента массива подсчитать result = sin(x) + cos(x), где x - итый элемент массива.
-Вывести в консоль сумму всех result для всего массива.
-Распараллельте эту логику на потоки для ускорения вычислений.
+Count
+for each element of the array, calculate result = sin (x) + cos (x), where x is the element of the array.
+Output to the console the sum of all result for the entire array.
+Parallel this logic to threads for faster computation.
 
-Пользователю надо ввести N в консоль. N это кол-во раз, сколько надо повторить Подсчет.
-Одновременно в программе может быть запущено только вычисление одного Подсчета. Но при этом саму итерацию подсчета нужно параллелить.
+The user must enter N into the console. N is the number of times to repeat the Count.
+At the same time, only one calculation can be started in the program. But the iteration of counting should be paralleled.
 
-Программа должна во время одного запуска работать в двух режимах. И подсчитывать время которое она затратила на каждый из режимов работы.
-Режим Thread. Программа создает каждый раз new Thread когда ей нужен поток.
-Режим Thread Pool. Программа использует один thread pool  единожды созданный.
+The program must operate in two modes during one run. And to count the time that she spent on each of the modes of operation.
+Thread mode. The program creates each time a new Thread when it needs a thread.
+Thread Pool Mode. The program uses one thread pool once created.
 */
 public class Task2 {
 
@@ -38,7 +38,7 @@ public class Task2 {
     public void start()throws ExecutionException, InterruptedException{
         int size = 8;
 
-        System.out.println("Введите кол-во раз, сколько надо повторить Подсчет");
+        System.out.println("Enter the number of times you want to repeat Counting");
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
         List<Integer> result = new ArrayList<>(size);
@@ -62,7 +62,7 @@ public class Task2 {
         for (FutureTask future : result4) {
             result6 += (double) future.get();
         }
-        System.out.println("Thread потратил времени: " + (System.currentTimeMillis() - startTime) + " Сумма = " + result6);
+        System.out.println("Thread spent time: " + (System.currentTimeMillis() - startTime) + " Amount = " + result6);
     }
 
 
@@ -78,7 +78,7 @@ public class Task2 {
         for (FutureTask future : result3) {
             result5 += (double) future.get();
         }
-        System.out.println("ThreadPool потратил времени: " + (System.currentTimeMillis() - startTime) + " Сумма = " + result5);
+        System.out.println("ThreadPool spent time: " + (System.currentTimeMillis() - startTime) + " Amount = " + result5);
     }
 
     private double summ(List<Integer> list, int size) {
